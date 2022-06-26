@@ -21,15 +21,13 @@ class Base{
 
 };
 class Der:public Base{
-
 	private :
 		int d;
 	public:
 		int e;
 		Der(int d_=0, int e_=0):d(d_),e(e_){cout<<"Der::constr"<<endl;}
+		Der(int a_,int b_, int c_,int d_, int e_):Base(a_,b_,c_),d(d_),e(e_){cout<<"Der::constr,also calling Base constr explicitely in the initializer list"<<endl;}
 		void DispD()const{cout<<"Der::d ="<<d<<", Der::e= "<<e<<endl;}
-
-
 };
 
 int main(int argc, char *argv[]){
