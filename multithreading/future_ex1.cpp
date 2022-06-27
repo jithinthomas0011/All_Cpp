@@ -6,9 +6,11 @@
 
 using namespace std;
 
-int threadFun_Factorial(int &n){
+unsigned long threadFun_Factorial(int &n){
   int result=1; 
-//Do the factorial logic here ..
+  while(n){
+    result *= n--;
+  }
   return result;
 }
 
@@ -17,10 +19,13 @@ int main(){
   
  cout<<"Main Thread"<<endl;
   
-  int inp, output=0;
-  cout<<"Enter a positive number to find factyorial"<<endl;
-  cin>>inp;
-  future<int>f =async(launch::async, threadFun_Factorial, std::ref(inp));
+  int inp;
+  unsigned long output=0;
+  do{
+  	cout<<"Enter a positive number to find factorial"<<endl;
+  	cin>>inp;
+  }while(inp<=0);
+  future<unsigned long>f =async(launch::async, threadFun_Factorial, std::ref(inp));
   
   output = f.get();
   
