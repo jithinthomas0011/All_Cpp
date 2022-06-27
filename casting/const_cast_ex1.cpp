@@ -5,7 +5,7 @@ using namespace std;
 
 class Base{
 
-	private :
+	private:
 		int i;
 	public:
 		Base(int i_=0):i(i_){cout<<__func__<<endl;}
