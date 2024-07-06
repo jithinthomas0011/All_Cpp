@@ -15,7 +15,7 @@ U Jadd(T first, T last, U func) {
         func(*first); //func is an object of adder. func(*first) will call the functor operator
         ++first;
     }
-    return func;
+    return func; //or return std::move(func)  // returning the adder object back to main thread, so that the sum will be copied or moved to the varialbe 'result'
 }
 
 
@@ -32,7 +32,7 @@ int main()
 {
     std::cout << "Main Begins..\n";
     vector<double>V(20);
-    generate(V.begin(), V.end(), rand);
+    generate(V.begin(), V.end(), rand); //Here the function pointer "rand" is passed. Dont give rand() as it'll try to look for such a constructor which doesn't exist. just give rand. 
 
     cout << "\nThe Vector elems are:\n";
     for (auto a : V) {
