@@ -39,7 +39,7 @@ public:
 
 int main() {
 
-	PTA* pta = new PTA(10);
+	Person* pta = new PTA(10);
 	pta->task();
 
 	delete pta;
